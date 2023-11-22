@@ -1,32 +1,22 @@
-package br.com.senac.api.entidades;
+package br.com.senac.api.dto;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity(name = "clientes")
-public class Clientes {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ClientesResponse {
+
     private Long id;
-
-    @Column(nullable = false)
     private String nome;
-    @Column(nullable = false)
-    private String sobrenome;
 
-    @Column
     private LocalDate dataNascimento;
 
-    @Column
+    private String sobrenome;
+
     private String email;
 
-    @Column
     private String telefone;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "clientes_id")
-    private List<Enderecos> enderecos;
+    private List<EnderecoResponse> enderecos;
 
     public Long getId() {
         return id;
@@ -44,20 +34,20 @@ public class Clientes {
         this.nome = nome;
     }
 
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
-
     public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 
     public String getEmail() {
@@ -76,11 +66,11 @@ public class Clientes {
         this.telefone = telefone;
     }
 
-    public List<Enderecos> getEnderecos() {
+    public List<EnderecoResponse> getEnderecos() {
         return enderecos;
     }
 
-    public void setEnderecos(List<Enderecos> enderecos) {
+    public void setEnderecos(List<EnderecoResponse> enderecos) {
         this.enderecos = enderecos;
     }
 }
